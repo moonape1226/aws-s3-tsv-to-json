@@ -60,8 +60,6 @@ def transformToJSON(in_file, upload_path, upload_file_prefix, LINE_PER_FILE, s3_
 
 if __name__ == '__main__':
 
-    SORUCE_BUCKET_NAME   = 'kkbox-db-dump'
-    DIST_BUCKET_NAME     = 'kkbox-json-dump'
     LINE_PER_FILE        = 1000000
     AWS_ACCESS_KEY_ID       = ''
     AWS_SECRET_ACCESS_KEY   = ''
@@ -78,6 +76,16 @@ if __name__ == '__main__':
 
     if "DATE" in os.environ:
         DATE = os.environ["DATE"]
+    else:
+        sys.exit(-1)
+
+    if "SORUCE_BUCKET_NAME" in os.environ:
+        SORUCE_BUCKET_NAME = os.environ["SORUCE_BUCKET_NAME"]
+    else:
+        sys.exit(-1)
+
+      if "DIST_BUCKET_NAME" in os.environ:
+        DIST_BUCKET_NAME = os.environ["DIST_BUCKET_NAME"]
     else:
         sys.exit(-1)
 
